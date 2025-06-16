@@ -29,32 +29,102 @@ This will:
 ## Output Structure
 
 All processed images are saved in the `/workspace/output/` directory with the following structure:
-```
-output/
-├── camera/           # Enhanced camera images with annotations
-├── lidar/            # Pure LiDAR visualizations
-├── lidar_aggregated/ # Multi-frame aggregated LiDAR
-├── lidar_compensated/# Motion-compensated LiDAR
-└── camera_lidar/     # Fused camera-LiDAR visualizations
-```
 
 ## Running Individual Modules
 
 Once inside the Docker container, you can run any of the processing modules:
 
+### Camera Processing
+Process camera images with annotations:
 ```bash
-# Process camera images with annotations
-python camera.py
-
-# Generate LiDAR visualizations
-python lidar.py
-
-# Create aggregated LiDAR visualizations
-python lidar_aggregated.py
-
-# Generate motion-compensated LiDAR
-python lidar_compensated.py
-
-# Create camera-LiDAR fusion images
-python camera_lidar.py
+python3 camera.py
 ```
+
+<div align="center">
+<table>
+<tr>
+<td><img src="examples/camera/camera_009158.png" width="300"></td>
+<td><img src="examples/camera/camera_018591.png" width="300"></td>
+</tr>
+<tr>
+<td><img src="examples/camera/camera_062592.png" width="300"></td>
+<td><img src="examples/camera/camera_083430.png" width="300"></td>
+</tr>
+</table>
+</div>
+
+### LiDAR Visualization
+Generate pure LiDAR visualizations:
+```bash
+python3 lidar.py
+```
+
+<div align="center">
+<table>
+<tr>
+<td><img src="examples/lidar/lidar_009158.png" width="300"></td>
+<td><img src="examples/lidar/lidar_018591.png" width="300"></td>
+</tr>
+<tr>
+<td><img src="examples/lidar/lidar_062592.png" width="300"></td>
+<td><img src="examples/lidar/lidar_083430.png" width="300"></td>
+</tr>
+</table>
+</div>
+
+### Aggregated LiDAR
+Create multi-frame aggregated LiDAR visualizations:
+```bash
+python3 lidar_aggregated.py
+```
+
+<div align="center">
+<table>
+<tr>
+<td><img src="examples/lidar_aggregated/lidar_aggregated_009158.png" width="300"></td>
+<td><img src="examples/lidar_aggregated/lidar_aggregated_018591.png" width="300"></td>
+</tr>
+<tr>
+<td><img src="examples/lidar_aggregated/lidar_aggregated_062592.png" width="300"></td>
+<td><img src="examples/lidar_aggregated/lidar_aggregated_083430.png" width="300"></td>
+</tr>
+</table>
+</div>
+
+### Motion-Compensated LiDAR
+Generate motion-compensated LiDAR visualizations:
+```bash
+python3 lidar_compensated.py
+```
+
+<div align="center">
+<table>
+<tr>
+<td><img src="examples/lidar_compensated/lidar_compensated_009158.png" width="300"></td>
+<td><img src="examples/lidar_compensated/lidar_compensated_018591.png" width="300"></td>
+</tr>
+<tr>
+<td><img src="examples/lidar_compensated/lidar_compensated_062592.png" width="300"></td>
+<td><img src="examples/lidar_compensated/lidar_compensated_083430.png" width="300"></td>
+</tr>
+</table>
+</div>
+
+### Camera-LiDAR Fusion
+Create fused camera-LiDAR visualizations:
+```bash
+python3 camera_lidar.py
+```
+
+<div align="center">
+<table>
+<tr>
+<td><img src="examples/camera_lidar/camera_lidar_009158.png" width="300"></td>
+<td><img src="examples/camera_lidar/camera_lidar_018591.png" width="300"></td>
+</tr>
+<tr>
+<td><img src="examples/camera_lidar/camera_lidar_062592.png" width="300"></td>
+<td><img src="examples/camera_lidar/camera_lidar_083430.png" width="300"></td>
+</tr>
+</table>
+</div>

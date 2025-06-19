@@ -8,31 +8,26 @@ This project provides tools for processing and visualizing the Zenseact Open Dat
 - ZOD dataset files (mini or full version)
 
 ## Setup and Installation
-
-### 1. Data Preparation
-Copy the unpacked ZOD data files to the `/data` folder:
-- `drives_mini.tar.gz`
-- `frames_mini.tar.gz` 
-- `sequences_mini.tar.gz`
-
-### 2. Start the Application
-```bash
-docker compose -f compose.yml run --rm nvidia-pytorch bash
+### Start the Application
+```
+docker compose run --rm --service-ports clft-zod bash
 ```
 
-This will:
-- Build the Docker container with NVIDIA PyTorch base image
-- Install required dependencies
-- Extract the data files to `/data_zod`
-- Launch an interactive bash session
+### Data Preparation
+Copy the unpacked ZOD data files to the `/data` folder:
+- `drives_mini.tar.gz`
+- `frames_mini.tar.gz`
+- `sequences_mini.tar.gz`
 
-## Output Structure
+Run command to extract data:
+```
+sh scripts/extract_zod_data.sh
+```
 
-All processed images are saved in the `/workspace/output/` directory with the following structure:
-
-## Running Individual Modules
-
-Once inside the Docker container, you can run any of the processing modules:
+### Start jupyter
+```
+scripts/jupyter_startup.sh
+```
 
 ### Camera Processing
 Process camera images with annotations:

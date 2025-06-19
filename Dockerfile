@@ -1,30 +1,32 @@
-# Uses NVIDIA's PyTorch container as base
-FROM nvcr.io/nvidia/pytorch:25.03-py3
+# Lightweight Python container for data exploration
+FROM python:3.12-slim
 
-# Set basic environment variables
+# Set environment variables
 ENV PYTHONUNBUFFERED=1 \
-    PYTHONDONTWRITEBYTECODE=1
+    PYTHONDONTWRITEBYTECODE=1 \
+    PIP_NO_CACHE_DIR=1 \
+    DEBIAN_FRONTEND=noninteractive
 
-# Install some common packages
+# Install system dependencies
 RUN apt-get update && \
     apt-get install -y --no-install-recommends \
-    curl wget git libgl1 && \
-    apt-get clean && \
-    rm -rf /var/lib/apt/lists/*
+    build-essential \
+    git \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/*
 
-# Create and set working directory
+# Create working directory
 WORKDIR /workspace
 
-# Install pip packages
-RUN pip install timm zod
+# Install Python packages
+COPY requirements.txt* ./
+RUN pip install -r requirements.txt
 
-# Copy
+# Copy project files (excluding files defined in .dockerignore)
 COPY . .
 
-RUN mkdir -p /data_zod
-RUN tar -xzvf /workspace/data/drives_mini.tar.gz -C ../data_zod
-RUN tar -xzvf /workspace/data/frames_mini.tar.gz -C ../data_zod
-RUN tar -xzvf /workspace/data/sequences_mini.tar.gz -C ../data_zod
+# Expose Jupyter port
+EXPOSE 8888
 
-# Default command - print info and run CUDA test
-CMD ["python", "cuda_test.py"]
+# Default command - can be overridden in compose.yml
+CMD ["/bin/bash"]

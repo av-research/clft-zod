@@ -1,0 +1,47 @@
+# Exclude large data files from Docker build context
+data/
+data/*
+data_clft/
+data_clft/*
+
+# Exclude output directory (also mounted externally)
+output/
+output/*
+
+# Exclude common development files
+.git/
+.gitignore
+*.md
+README.md
+
+# Exclude Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Exclude IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Exclude OS files
+.DS_Store
+Thumbs.db

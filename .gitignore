@@ -1,5 +1,6 @@
 data
 output
+output_clft
 venv
-data_clft
 .ipynb_checkpoints
+*.pth

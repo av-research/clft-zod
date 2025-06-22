@@ -385,7 +385,7 @@ def main():
         return
 
     dataset_root = "../data_zod"  # Adjust path as needed
-    sam_checkpoint = "sam_vit_h_4b8939.pth"  # Make sure this file exists
+    sam_checkpoint = "models/sam_vit_h_4b8939.pth"  # Make sure this file exists
     output_dir = "output_clft"
     num_frames = None  # Process all frames (set to number to limit, e.g., 5 for testing)
     

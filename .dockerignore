@@ -1,12 +1,14 @@
 # Exclude large data files from Docker build context
 data/
 data/*
-data_clft/
-data_clft/*
-
-# Exclude output directory (also mounted externally)
+output_clft/
+output_clft/*
 output/
 output/*
+models/
+models/*
+notebooks/
+notebooks/*
 
 # Exclude common development files
 .git/

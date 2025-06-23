@@ -8,13 +8,14 @@ services:
     container_name: python-lite
     volumes:
       - ./:/workspace
+      - data_zod:/data_zod  # Persistent data volume
     environment:
       - PYTHONPATH=/workspace
     stdin_open: true
     tty: true
     ports:
       - "8888:8888"
-    working_dir: /workspace  
+    working_dir: /workspace
 
   # GPU-enabled service with CUDA support
   python-cuda:
@@ -25,6 +26,7 @@ services:
     container_name: python-cuda
     volumes:
       - ./:/workspace
+      - data_zod:/data_zod  # Persistent data volume
     environment:
       - PYTHONPATH=/workspace
       - NVIDIA_VISIBLE_DEVICES=all
@@ -45,3 +47,6 @@ services:
               count: all
               capabilities: [gpu]
     shm_size: '16g'
+
+volumes:
+  data_zod:  # Named volume for persistent data storage
